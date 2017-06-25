@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block body %}
+    <br/>
+    <br/>
+    <div class="jumbotron">
+        <h3>
+            {{ page_title }}
+        </h3>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <fieldset>
+                <legend>Enter credentials:</legend>
+                <form class="form-horizontal" action="/login" method="post">
+                    <div class="form-group">
+                        {{ form.hidden_tag() }}
+                        <label for="username" class="col-lg-3 control-label">Username:</label>
+                        <div class="col-lg-9">
+                            {{ form.username(class="form-control") }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="col-lg-3 control-label">Password:</label>
+                        <div class="col-lg-9">
+                            {{ form.password(class="form-control") }}
+                            <div class="checkbox">
+                                <label>
+                                    {{ form.remember(type="checkbox") }} Remember me
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-9 col-lg-offset-3">
+                            <input type="submit" class="btn btn-primary" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </fieldset>
+            <br>
+            {% for message in get_flashed_messages() %}
+                <div class=flash>{{ message }}</div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

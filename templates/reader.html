@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block body %}
+    <br>
+    <div class="jumbotron">
+        <h3>Hello {{ name }}</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <input type="button" class="btn" id="show-books-reader"
+                   value="Show Taken Books">
+        </div>
+
+        <div class="col-md-4">
+            <div class="btn-group closed" id="btn-pg-reader-items">
+                <a href="#" class="btn btn-success">Items per page</a>
+                <a href="#" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" id="ul-page-size-reader">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">100</a></li>
+                </ul>
+            </div>
+        <a href="#" id="btn-pg-reader" class="btn btn-success disabled">100</a>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-hover" id="tbl-taken-books">
+                <thead>
+
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <ul class="pagination hidden" id="pg-taken-books">
+                <li id="pg-taken-left" class="disabled"><a href="#">&laquo;</a></li>
+                <li id="page-number-reader"><a href="#">1</a></li>
+                <li id="pg-taken-right"><a href="#">&raquo;</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+    </div>
+{% endblock %}

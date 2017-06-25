@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block body %}
+    <br>
+    <br>
+    <div class="jumbotron">
+        <h3>
+            {{ page_title }}
+        </h3>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <fieldset>
+                <legend>Please enter new user data</legend>
+                <form class="form-horizontal" action="/register" method="post">
+                    <div class="form-group">
+                        {{ form.hidden_tag() }}
+                        <label for="username" class="col-md-3 control-label">Username:</label>
+                        <div class="col-md-9">
+                            {{ form.username(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-md-3 control-label">Email:</label>
+                        <div class="col-md-9">
+                            {{ form.email(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-md-3 control-label">Password:</label>
+                        <div class="col-md-9">
+                            {{ form.password(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm" class="col-md-3 control-label">Confirm:</label>
+                        <div class="col-md-9">
+                            {{ form.confirm(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-md-offset-3">
+                            <input type="submit" class="btn btn-primary" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </fieldset>
+            <br>
+            {% for message in get_flashed_messages() %}
+                <div class=flash>{{ message }}</div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

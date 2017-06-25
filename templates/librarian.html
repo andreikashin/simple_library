@@ -1,0 +1,158 @@
+{% extends "layout.html" %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block body %}
+    <br>
+    <div class="jumbotron">
+        <h3>Hello Librarian {{ name }}</h3>
+    </div>
+    <div class="well bs-component">
+        <div class="row">
+            <div class="col-md-6">
+                <fieldset>
+                    <legend>Insert/Update book</legend>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Title</label>
+                            <div class="col-md-9">
+                                <input class="form-control" type="text" id="title">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Genre</label>
+                            <div class="col-md-9">
+                                <input class="form-control" type="text" id="genre">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">ISBN</label>
+                            <div class="col-md-9">
+                                <input class="form-control" type="text" id="isbn">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Author</label>
+                            <div class="col-md-9">
+                                <input class="form-control" type="text" id="author">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Year</label>
+                            <div class="col-md-9">
+                                <input class="form-control" type="text" id="year">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-9 col-md-offset-3">
+                                <div class="btn-group btn-group-justified">
+                                    <a class="btn btn-default" onclick="addBook()">Add</a>
+                                    <a class="btn btn-default" onclick="updateBook()">Update</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+            <div class="col-md-6">
+                <fieldset>
+                    <legend>Remove book</legend>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">ISBN</label>
+                            <div class="col-md-9">
+                                <input class="form-control" type="text" id="bookIsbnRem">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-9 col-md-offset-3">
+                                <input class="btn btn-default" type="button" onclick="removeBook()"
+                                       value="Remove book">
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+        </div>
+        <div class="alert alert-dismissible alert-info fade out" id="book-alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+    </div>
+    <div class="well bs-component">
+        <div class="row">
+            <div class="col-md-6">
+                <fieldset>
+                    <legend>Add/Remove copy</legend>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">ISBN</label>
+                            <div class="col-md-9">
+                                <input class="form-control" type="text" id="copyIsbn">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Number</label>
+                            <div class="col-md-9">
+                                <input class="form-control" type="text" id="copyNr">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-9 col-md-offset-3">
+                                <div class="btn-group btn-group-justified">
+                                    <a class="btn btn-default" onclick="addCopy()">Add</a>
+                                    <a class="btn btn-default" onclick="removeCopy()">Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+        </div>
+        <div class="alert alert-dismissible alert-success fade out" id="copy-alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+    </div>
+    <div class="well bs-component">
+        <div class="row">
+            <div class="col-md-6">
+                <fieldset>
+                    <legend>Borrow/Return/Extend copy</legend>
+                    <form class="form-horizontal">
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">ISBN</label>
+                            <div class="col-md-9">
+                                <input class="form-control" type="text" id="copyIsbnBor">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Number</label>
+                            <div class="col-md-9">
+                                <input class="form-control" type="text" id="copyNrBor">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Reader</label>
+                            <div class="col-md-9">
+                                <input class="form-control" type="text" id="copyReadBor">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-9 col-md-offset-3">
+                                <div class="btn-group btn-group-justified">
+                                    <a class="btn btn-default" onclick="borrowCopy()">Borrow</a>
+                                    <a class="btn btn-default" onclick="returnCopy()">Return</a>
+                                    <a class="btn btn-default" onclick="extendCopy(null, null)">Extend</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+        </div>
+        <div class="alert alert-dismissible alert-success fade out" id="copy-action-alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+    </div>
+{% endblock %}
